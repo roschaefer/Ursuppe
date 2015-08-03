@@ -3,3 +3,4 @@
 !*.rb
 !.gitignore
 !db/backup.csv
+!Rakefile
