@@ -4,3 +4,4 @@
 !.gitignore
 !db/backup.csv
 !Rakefile
+!config/*
