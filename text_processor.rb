@@ -4,7 +4,7 @@ text = ""
 pre_text = ""
 post_text = ""
 
-now = DateTime.now
+now = Time.now
 
 title = "First"
 date = now.strftime("%Y-%m-%d")
@@ -12,14 +12,23 @@ time = now.strftime("%H:%M:%S")
 filename = "#{date}-#{title}"
 datetime = "#{date} #{time}"
 
+
+start_day = Time.new(2015, 07, 31)
+day_of_experiment = ((now - start_day)/1.day).to_i
+fill_level = 5
+temperature = 21
+light = 5
+
+
+
 Template.all.each do |t|
   fits = true
-  fits &= (t.Baustein_von <= 1)
-  fits &= (1 < t.Baustein_bis)
+  fits &= (t.Baustein_von <= day_of_experiment)
+  fits &= (day_of_experiment < t.Baustein_bis)
   #fits &= (t.Baustein_Zeitvon <= 20)
   #fits &= (20 < t.Baustein_Zeitbis)
-  fits &= (t.Sensor_Min < 18)
-  fits &= (18 > t.Sensor_Max)
+  fits &= (t.Sensor_Min < temperature)
+  fits &= (temperature > t.Sensor_Max)
   fits &= (t.Baustein_Typ == "text")
   if fits
     pre_text << t.Baustein_Vorspann.to_s
@@ -55,5 +64,10 @@ result << "\n"
 result << "\n"
 result << post_text
 result << "\n"
+
+result.gsub!("%!tag", day_of_experiment.to_s)
+result.gsub!("%!fuell", fill_level.to_s)
+result.gsub!("%!licht", light.to_s)
+result.gsub!("%!temp", temperature.to_s)
 
 File.open("UrsuppeBlog/_posts/#{filename}.md", 'w') { |file| file.write(result) }
