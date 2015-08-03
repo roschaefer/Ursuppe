@@ -20,16 +20,30 @@ temperature = 21
 light = 5
 
 
+m = Measurement.last
 
 Template.all.each do |t|
   fits = true
   fits &= (t.Baustein_von <= day_of_experiment)
-  fits &= (day_of_experiment < t.Baustein_bis)
+  fits &= (day_of_experiment <= t.Baustein_bis)
   #fits &= (t.Baustein_Zeitvon <= 20)
   #fits &= (20 < t.Baustein_Zeitbis)
-  fits &= (t.Sensor_Min < temperature)
-  fits &= (temperature > t.Sensor_Max)
   fits &= (t.Baustein_Typ == "text")
+
+  unless t.Sensor_Nr == 0
+    mapping = {
+      1=> :temperature,
+      2=> :light,
+      3=> :movement_ground
+    }
+    sensor_attribute = mapping[t.Sensor_Nr]
+    value = m.send(sensor_attribute) if sensor_attribute
+    if value
+      fits &= (t.Sensor_Min <= value)
+      fits &= (value <= t.Sensor_Max)
+    end
+  end
+
   if fits
     pre_text << t.Baustein_Vorspann.to_s
     text << t.Baustein_Text.to_s
