@@ -2,3 +2,4 @@
 !*/
 !*.rb
 !.gitignore
+!db/backup.csv
