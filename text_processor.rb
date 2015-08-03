@@ -4,6 +4,14 @@ text = ""
 pre_text = ""
 post_text = ""
 
+now = DateTime.now
+
+title = "First"
+date = now.strftime("%Y-%m-%d")
+time = now.strftime("%H:%M:%S")
+filename = "#{date}-#{title}"
+datetime = "#{date} #{time}"
+
 Template.all.each do |t|
   fits = true
   fits &= (t.Baustein_von <= 1)
@@ -20,5 +28,32 @@ Template.all.each do |t|
   end
 end
 
-text = pre_text + text + post_text
-puts text.strip
+
+result =
+%{---
+layout: post
+title:  "#{title}"
+date:   #{datetime}
+categories: ursuppe
+---
+}
+
+result << "##Vorspann"
+result << "\n"
+result << "\n"
+result << pre_text
+result << "\n"
+result << "\n"
+result << "##Haupttext"
+result << "\n"
+result << "\n"
+result << text
+result << "\n"
+result << "\n"
+result << "##Nachspann"
+result << "\n"
+result << "\n"
+result << post_text
+result << "\n"
+
+File.open("UrsuppeBlog/_posts/#{filename}.md", 'w') { |file| file.write(result) }
