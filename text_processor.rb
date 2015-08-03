@@ -1,6 +1,8 @@
 require 'active_record'
 require 'sqlite3'
 require 'logger'
+require 'pry'
+require 'csv'
 
 ActiveRecord::Base.logger = Logger.new('debug.log')
 configuration = YAML::load(IO.read('config/database.yml'))
