@@ -15,7 +15,7 @@ class Schema < ActiveRecord::Migration
       t.integer :Min_vergangenseitmessung
       t.integer :zufallszahl_set
       t.integer :zufallszahl_position
-      t.string :Baustein_Text
+      t.text    :Baustein_Text
       t.string :Baustein_Vorspann
       t.string :Baustein_Abspann
       t.string :Baustein_Quelle

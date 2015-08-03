@@ -12,4 +12,3 @@ attributes[:movement_ground] = core.variable("movement_gro")
 #attributes[:light] = core.variable("Licht")
 m = Measurement.new(attributes)
 m.save
-binding.pry
