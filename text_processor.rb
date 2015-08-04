@@ -48,7 +48,7 @@ class TextProcessor
       if fits
         pre_text << t.Baustein_Vorspann.to_s
         text << t.Baustein_Text.to_s
-        post_text << t.Baustein_Vorspann.to_s
+        post_text << t.Baustein_Abspann.to_s
       end
     end
 
@@ -62,6 +62,7 @@ categories: ursuppe
 ---
     }
 
+    result << "\n"
     result << "##Vorspann"
     result << "\n"
     result << "\n"
