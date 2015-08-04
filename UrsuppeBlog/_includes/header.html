@@ -1,8 +1,35 @@
+
+
 <header class="site-header">
+	<style>
 
+      /*body      { font-family: arial, sans-serif; width: 30em; }*/
+      p         { font-family: garamond, times, serif; color: black; font-size: 0.9em;  text-align: justify; font-weight: normal; line-height: 1.5em; }
+      h1        { text-align: center; font-size: 2.3em; color: #FFFFFF;font-weight: bold; }
+	  h3        { text-align: center; font-size: 1.4em; color: #FFFFFF;font-weight: normal; }
+      a         { color: #de5410; }
+      a:visited { color: rgb(153,68,0); }
+      span      { color: hsl(240,100%,50%); } 
+	  img { width: 600px;  height: auto;}
+	  
+	   #top {
+		   background-image:
+	    url(http://localhost:4000/ursuppe//img/aufmacherbild2.jpg);
+        height: 25em;
+        outline: 0px solid;
+        width: auto;
+		h1, h2, h3 {vertical-align:bottom;text-align: center; }
+		}
+	  
+
+	  </style>
+<section id="top">
   <div class="wrapper">
-
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+	 
+ 	
+	
+    <h1>{{ site.title }}</h1>
+	<h3>{{ site.description}} </h3>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -23,5 +50,5 @@
     </nav>
 
   </div>
-
+</section>
 </header>
