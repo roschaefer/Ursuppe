@@ -22,6 +22,7 @@ class TextProcessor
 
     m = Measurement.last
     return if m.nil?
+    sended_commands = Command.where(:done => false)
 
     Template.all.each do |t|
       fits = true
@@ -52,6 +53,18 @@ class TextProcessor
       end
     end
 
+    command_section = ""
+    sended_commands.find_each do |command|
+      mapping = {
+        "light_on" => "Einschalten",
+        "light_off" => "Ausschalten"
+      }
+      what = mapping[command.name]
+      command_section << "\n##Feedback\nVielen dank an #{command.tweet.user} für das #{what} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.%m.%Y")}!\n"
+      command.done = true
+      command.save
+    end
+
 
     result =
       %{---
@@ -62,6 +75,8 @@ categories: ursuppe
 ---
     }
 
+    result << "\n"
+    result << command_section
     result << "\n"
     result << "##Vorspann"
     result << "\n"
