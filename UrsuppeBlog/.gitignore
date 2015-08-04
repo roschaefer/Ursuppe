@@ -1,2 +1,8 @@
 _site
 .sass-cache
+!./**/*.html
+!./**/*.css
+!./**/*.yml
+!./**/*.jpg
+!./**/*.scss
+!./**/*.css

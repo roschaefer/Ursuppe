@@ -7,7 +7,3 @@
 !Rakefile
 !config/*
 !Gemfile
-!UrsuppeBlog/**/*.html
-!UrsuppeBlog/**/*.css
-!UrsuppeBlog/**/*.yml
-!UrsuppeBlog/**/*.jpg
