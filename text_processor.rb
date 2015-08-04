@@ -21,6 +21,7 @@ light = 5
 
 
 m = Measurement.last
+exit if m.nil?
 
 Template.all.each do |t|
   fits = true

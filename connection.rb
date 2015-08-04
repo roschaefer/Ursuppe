@@ -32,5 +32,9 @@ class  Tweet < ActiveRecord::Base
     end
     commands
   end
+
+  def done!
+    self.done = true
+  end
 end
 
