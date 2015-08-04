@@ -1,9 +1,3 @@
-*
-!*/
-!*/.gitignore
-!.gitkeep
-!*.rb
-!db/backup.csv
-!Rakefile
-!config/*
-!Gemfile
+*.log
+*.sqlite3
+*DS_Store
