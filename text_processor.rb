@@ -82,19 +82,13 @@ categories: ursuppe
     result << "\n"
     result << command_section
     result << "\n"
-    result << "##Vorspann"
     result << "\n"
+    result << "####{pre_text}"
     result << "\n"
-    result << pre_text
-    result << "\n"
-    result << "\n"
-    result << "##Haupttext"
     result << "\n"
     result << "\n"
     result << text
     result << "\n"
-    result << "\n"
-    result << "##Nachspann"
     result << "\n"
     result << "\n"
     result << post_text
