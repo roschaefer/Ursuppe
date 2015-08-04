@@ -11,13 +11,17 @@ class TweetCrawler
   end
 
   def save_tweets
-    tweets = @client.search("#ursuppe")
+    last_tweet = Tweet.order(:tweeted_at  => :desc).last
+    query = "#ursuppe"
+    query << " since:#{last_tweet.tweeted_at.strftime("%Y:%m:%d")}" if last_tweet
+    tweets = @client.search(query)
     tweets.each do |tweet|
       t = Tweet.new( {
         :user => tweet.user.screen_name.to_s,
         :text => tweet.text.to_s,
         :location => tweet.user.location.to_s,
-        :image => tweet.user.profile_image_uri_https.to_s
+        :image => tweet.user.profile_image_uri_https.to_s,
+        :tweeted_at => tweet.created_at
       })
       t.save
     end
