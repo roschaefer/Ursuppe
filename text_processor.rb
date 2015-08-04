@@ -24,7 +24,7 @@ class TextProcessor
     return if m.nil?
     sended_commands = Command.where(:done => false)
 
-    Template.all.each do |t|
+    Template.all.each_with_index do |t, i|
       fits = true
       fits &= (t.Baustein_von <= day_of_experiment)
       fits &= (day_of_experiment <= t.Baustein_bis)
@@ -48,6 +48,10 @@ class TextProcessor
 
       if fits
         pre_text << t.Baustein_Vorspann.to_s
+        if (i % 3 == 0)
+          text << "\n\n####{t.Baustein_Titel}" if t.Baustein_Titel
+          text << "\n\n"
+        end
         text << t.Baustein_Text.to_s
         post_text << t.Baustein_Abspann.to_s
       end
@@ -60,7 +64,7 @@ class TextProcessor
         "light_off" => "Ausschalten"
       }
       what = mapping[command.name]
-      command_section << "\n##Feedback\nVielen dank an #{command.tweet.user} für das #{what} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.%m.%Y")}!\n"
+      command_section << "\n##Feedback\nVielen dank an #{command.tweet.user} für das #{what} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.um.%Y")}!\n"
       command.done = true
       command.save
     end
