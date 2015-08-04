@@ -21,7 +21,7 @@ class TextProcessor
 
 
     m = Measurement.last
-    exit if m.nil?
+    return if m.nil?
 
     Template.all.each do |t|
       fits = true

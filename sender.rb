@@ -17,6 +17,8 @@ class Sender
       unless tweet.done?
         tweet.commands.each do |command|
           send(command)
+          command_record = Command.new({:name => command, :tweet => tweet, :done => false})
+          command_record.save
         end
         tweet.done!
       end
