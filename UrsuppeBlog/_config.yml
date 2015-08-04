@@ -1,0 +1,11 @@
+# Site settings
+title: "Die Ursuppe – Die erste Sensorjournalismus-Reportage" 
+email: post@jakobvicari.de
+description: "Die Ursuppe beobachtet die älteste Lebensform der Welt. Und generiert Ihnen eine persönliche Reortage. Live, im Moment ihres Aufrufs"
+baseurl: "/ursuppe/" # the subpath of your site, e.g. /blog/
+url: "http://sensorjournalismus.de" # the base hostname & protocol for your site
+twitter_username: roboterreporter
+github_username:  drjakob
+
+# Build settings
+markdown: kramdown
