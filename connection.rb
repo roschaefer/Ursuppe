@@ -35,6 +35,7 @@ class  Tweet < ActiveRecord::Base
 
   def done!
     self.done = true
+    self.save!
   end
 end
 
