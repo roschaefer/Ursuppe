@@ -14,8 +14,11 @@ class Sender
 
   def send_commands
     Tweet.find_each do |tweet|
-      tweet.commands.each do |command|
-        send(command)
+      unless tweet.done?
+        tweet.commands.each do |command|
+          send(command)
+        end
+        tweet.done!
       end
     end
   end
@@ -29,5 +32,3 @@ class Sender
   end
 end
 
-s = Sender.new
-s.send_commands
