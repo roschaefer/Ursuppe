@@ -64,7 +64,7 @@ class TextProcessor
         "light_off" => "Ausschalten"
       }
       what = mapping[command.name]
-      command_section << "\n##Feedback\nVielen dank an #{command.tweet.user} für das #{what} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.um.%Y")}!\n"
+      command_section << "\n**Feedback**:\n Vielen Dank an #{command.tweet.user} für das #{what} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.%m.%Y")}!\n"
       command.done = true
       command.save
     end
@@ -80,10 +80,10 @@ categories: ursuppe
     }
 
     result << "\n"
-    result << command_section
-    result << "\n"
-    result << "\n"
     result << "####{pre_text}"
+    result << "\n"
+    result << "\n"
+    result << command_section
     result << "\n"
     result << "\n"
     result << "\n"

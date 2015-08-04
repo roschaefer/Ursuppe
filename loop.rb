@@ -15,8 +15,9 @@ loop do
   i += 1
   puts "iteration #{i}"
   crawler.save_measurement
-  processor.save_text("number-#{i}")
+  processor.save_text("Reportage aus der Ursuppe Nr.#{i}")
   tweeter.save_tweets
   sender.send_commands
-  sleep 5
+  puts "Press Enter"
+  gets
 end
