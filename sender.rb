@@ -32,5 +32,3 @@ class Sender
   end
 end
 
-s = Sender.new
-s.send_commands
