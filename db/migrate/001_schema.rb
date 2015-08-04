@@ -23,7 +23,7 @@ class Schema < ActiveRecord::Migration
       t.string :bild_bu
       t.string :bild_credit
     end
-    csv_text = File.read('db/dump.csv')
+    csv_text = File.read('db/backup.csv')
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
       t = Template.new(row.to_hash)
