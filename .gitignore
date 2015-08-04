@@ -1,7 +1,8 @@
 *
 !*/
+!*/.gitignore
+!.gitkeep
 !*.rb
-!.gitignore
 !db/backup.csv
 !Rakefile
 !config/*
