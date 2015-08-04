@@ -24,6 +24,7 @@ class  Measurement < ActiveRecord::Base
 end
 
 class  Tweet < ActiveRecord::Base
+  validates :twitter_id, :uniqueness => :true
   def commands
     commands = []
     hashtag_mapping = {
