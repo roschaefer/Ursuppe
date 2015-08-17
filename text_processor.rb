@@ -1,6 +1,6 @@
 require './models'
 class TextProcessor
-  def save_text(title)
+  def text()
     text = ""
     pre_text = ""
     post_text = ""
@@ -9,7 +9,6 @@ class TextProcessor
 
     date = now.strftime("%Y-%m-%d")
     time = now.strftime("%H:%M:%S")
-    filename = "#{date}-#{title}"
     datetime = "#{date} #{time}"
 
 
@@ -70,15 +69,7 @@ class TextProcessor
     end
 
 
-    result =
-      %{---
-layout: post
-title:  "#{title}"
-date:   #{datetime}
-categories: ursuppe
----
-    }
-
+    result = ""
     result << "\n"
     result << "####{pre_text}"
     result << "\n"
@@ -98,7 +89,19 @@ categories: ursuppe
     result.gsub!("%!fuell", fill_level.to_s)
     result.gsub!("%!licht", light.to_s)
     result.gsub!("%!temp", temperature.to_s)
+    result
+  end
 
+  def save_text(title)
+    result = %{---
+layout: post
+title:  "#{title}"
+date:   #{datetime}
+categories: ursuppe
+---}
+
+    result << self.text
+    filename = "#{date}-#{title}"
     File.open("UrsuppeBlog/_posts/#{filename}.md", 'w') { |file| file.write(result) }
   end
 end
