@@ -1,3 +1,4 @@
+require 'csv'
 class Schema < ActiveRecord::Migration
   def change
     create_table :templates, :id => false, :force => :true do |t|
@@ -15,7 +16,7 @@ class Schema < ActiveRecord::Migration
       t.integer :Min_vergangenseitmessung
       t.integer :zufallszahl_set
       t.integer :zufallszahl_position
-      t.text    :Baustein_Text
+      t.string :Baustein_Text
       t.string :Baustein_Vorspann
       t.string :Baustein_Abspann
       t.string :Baustein_Quelle
@@ -23,8 +24,7 @@ class Schema < ActiveRecord::Migration
       t.string :bild_bu
       t.string :bild_credit
     end
-    csv_text = File.read('db/backup.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.read(File.expand_path('../../backup.csv', __FILE__), :headers => true)
     csv.each do |row|
       t = Template.new(row.to_hash)
       t.save!

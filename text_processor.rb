@@ -1,4 +1,4 @@
-require './connection'
+require './models'
 class TextProcessor
   def save_text(title)
     text = ""

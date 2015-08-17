@@ -5,3 +5,8 @@ gem 'sqlite3'
 gem 'ruby_spark'
 gem 'pry'
 gem 'twitter'
+gem 'standalone_migrations'
+
+group 'test' do
+  gem 'rspec', :require => 'spec'
+end
