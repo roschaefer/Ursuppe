@@ -21,5 +21,10 @@ RSpec.describe TweetCrawler do
         specify{ expect(subject.tweets.first.text).to include("#ursuppe") }
       end
     end
+
+    describe "#save_tweets" do
+      specify{expect(Tweet.all).to be_empty}
+      specify{expect{subject.save_tweets}.to change{Tweet.count}.from(0).to(1)}
+    end
   end
 end

@@ -11,4 +11,5 @@ group 'test' do
   gem 'rspec', :require => 'spec'
   gem 'vcr'
   gem 'webmock'
+  gem 'database_cleaner'
 end
