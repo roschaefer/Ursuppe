@@ -1,6 +1,7 @@
 require './connection'
 
 class TweetCrawler
+  QUERY = "#ursuppe"
   def initialize
     @client = Twitter::REST::Client.new do |config|
       config.access_token = "1558870975-G7P8Cg6GP1CI64aKNKcGB7bNAODieeu7PEDryRl"
@@ -10,10 +11,12 @@ class TweetCrawler
     end
   end
 
+
+  def tweets
+    @client.search(QUERY)
+  end
+
   def save_tweets
-    last_tweet = Tweet.order(:tweeted_at  => :desc).last
-    query = "#ursuppe"
-    tweets = @client.search(query)
     tweets.each do |tweet|
       t = Tweet.new( {
         :twitter_id => tweet.id,

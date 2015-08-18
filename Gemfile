@@ -9,4 +9,6 @@ gem 'standalone_migrations'
 
 group 'test' do
   gem 'rspec', :require => 'spec'
+  gem 'vcr'
+  gem 'webmock'
 end
