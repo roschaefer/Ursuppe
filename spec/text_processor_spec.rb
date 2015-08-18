@@ -10,7 +10,7 @@ RSpec.describe TextProcessor do
   describe "#text" do
     context "given high temperature" do
       before(:each) { Measurement.create!(:temperature => 50) }
-      before(:each) { Template.create!(
+      before(:each) { TextComponent.create!(
                           :Sensor_Nr => 1,
                           :Sensor_Min => 40,
                           :Sensor_Max => 100,

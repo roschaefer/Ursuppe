@@ -24,7 +24,7 @@ class TextProcessor
     return if m.nil?
     sended_commands = Command.where(:done => false)
 
-    Template.all.each_with_index do |t, i|
+    TextComponent.all.each_with_index do |t, i|
       fits = true
       fits &= (t.Baustein_von <= day_of_experiment)
       fits &= (day_of_experiment <= t.Baustein_bis)

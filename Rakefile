@@ -10,7 +10,7 @@ namespace :csv do
   task :import  => :environment do
     csv = CSV.read(File.expand_path('db/backup.csv', File.dirname(__FILE__)), :headers => true)
     csv.each do |row|
-      t = Template.new(row.to_hash)
+      t = TextComponent.new(row.to_hash)
       t.save!
     end
   end

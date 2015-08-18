@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 20150818214856) do
 
   create_table "commands", force: :cascade do |t|
     t.string  "name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 8) do
     t.integer "temperature"
   end
 
-  create_table "templates", primary_key: "Baustein_ID", force: :cascade do |t|
+  create_table "text_components", primary_key: "Baustein_ID", force: :cascade do |t|
     t.string   "Baustein_Titel"
     t.string   "Baustein_Typ"
     t.integer  "Baustein_Prio"

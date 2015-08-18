@@ -1,4 +1,4 @@
-class  Template < ActiveRecord::Base
+class  TextComponent < ActiveRecord::Base
 
 end
 
