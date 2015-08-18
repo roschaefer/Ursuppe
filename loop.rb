@@ -1,8 +1,5 @@
+require './app'
 require './connection'
-require './crawler'
-require './text_processor'
-require './tweet_crawler'
-require './sender'
 
 crawler = Crawler.new
 processor = TextProcessor.new

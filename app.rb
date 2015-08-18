@@ -1,0 +1,12 @@
+require 'active_record'
+require 'sqlite3'
+require 'logger'
+require 'pry'
+require 'ruby_spark'
+require 'twitter'
+
+require './models'
+require './crawler'
+require './text_processor'
+require './tweet_crawler'
+require './sender'

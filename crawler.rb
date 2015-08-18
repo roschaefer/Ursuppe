@@ -1,4 +1,4 @@
-require './connection'
+require './app'
 
 class Crawler
   def initialize

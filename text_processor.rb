@@ -1,4 +1,5 @@
-require './models'
+require './app'
+
 class TextProcessor
   def text()
     text = ""

@@ -1,7 +1,4 @@
-require './connection'
-
-
-
+require './app'
 
 class Sender
   def initialize
