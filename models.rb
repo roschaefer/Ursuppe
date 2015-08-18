@@ -1,5 +1,24 @@
 class  TextComponent < ActiveRecord::Base
-
+  MAPPING_SENSOR_NR = {
+          1 => :temperature,
+          2 => :light,
+          3 => :movement_ground
+  }
+  def fits_to?(measurement)
+    fits = true
+    attribute_name = MAPPING_SENSOR_NR[self.Sensor_Nr]
+    if attribute_name # if this is not nil, we check the sensor data
+      value = measurement.send(attribute_name)
+      # we assume that we have no nil values in measurements
+      if self.Sensor_Min
+        fits &= self.Sensor_Min <= value 
+      end
+      if self.Sensor_Max
+        fits &= self.Sensor_Max >= value
+      end
+    end
+    fits
+  end
 end
 
 class  Measurement < ActiveRecord::Base

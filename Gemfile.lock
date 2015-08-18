@@ -106,6 +106,7 @@ GEM
       rake (~> 10.0)
     thor (0.19.1)
     thread_safe (0.3.5)
+    timecop (0.8.0)
     twitter (5.14.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -135,6 +136,7 @@ DEPENDENCIES
   ruby_spark
   sqlite3
   standalone_migrations
+  timecop
   twitter
   vcr
   webmock

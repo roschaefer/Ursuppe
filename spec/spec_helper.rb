@@ -1,7 +1,8 @@
-require 'support/active_record'
+Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f }
 require_relative '../models'
 require 'vcr'
 require 'database_cleaner'
+require 'timecop'
 
 VCR.configure do |c|
   c.cassette_library_dir     = 'spec/cassettes'
