@@ -4,13 +4,17 @@ class TweetCrawler
   QUERY = "#ursuppe"
   def initialize
     @client = Twitter::REST::Client.new do |config|
-      config.access_token = "1558870975-G7P8Cg6GP1CI64aKNKcGB7bNAODieeu7PEDryRl"
-      config.access_token_secret = "J6rYortFGoQTgnVreaXyHylCwMS45TvUTDGcmo5FnDlSq"
-      config.consumer_key = "AqmLdN6AAW0u7d5r1Xa3TD3Qs"
-      config.consumer_secret = "rQGtRzfYTVkCL2jAIrBbdqBieaXJOXPFgMoysBPS9u1uXZeAzG"
+      config.access_token        = secrets['access_token']
+      config.access_token_secret = secrets['access_token_secret']
+      config.consumer_key        = secrets['consumer_key']
+      config.consumer_secret     = secrets['consumer_secret']
     end
   end
 
+  def secrets
+    @secrets ||= YAML::load_file('secrets.yml')
+    @secrets["twitter"]
+  end
 
   def tweets
     @client.search(QUERY)
