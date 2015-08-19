@@ -6,10 +6,9 @@ require 'ruby_spark'
 require 'twitter'
 
 require './ursuppe/models'
-require './ursuppe/crawler'
 require './ursuppe/text_processor'
 require './ursuppe/tweet_crawler'
-require './ursuppe/sender'
+require './ursuppe/spark'
 
 module Ursuppe
   START_OF_EXPERIMENT = Time.new(2015, 01, 01)
