@@ -9,6 +9,7 @@ gem 'standalone_migrations'
 
 group 'test' do
   gem 'rspec', :require => 'spec'
+  gem 'rspec-collection_matchers'
   gem 'vcr'
   gem 'webmock'
   gem 'database_cleaner'

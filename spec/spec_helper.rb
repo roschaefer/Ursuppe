@@ -1,9 +1,9 @@
+require 'rspec/collection_matchers'
 Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f }
 require_relative '../ursuppe'
 require 'vcr'
 require 'database_cleaner'
 require 'timecop'
-
 VCR.configure do |c|
   c.cassette_library_dir     = 'spec/cassettes'
   c.hook_into                   :webmock
