@@ -10,7 +10,10 @@ module Ursuppe
       attribute_name = MAPPING_SENSOR_NR[self.Sensor_Nr]
       if attribute_name # if this is not nil, we check the sensor data
         value = measurement.send(attribute_name)
-        # we assume that we have no nil values in measurements
+
+        # if we have measured nil, we assume the text component doesn't fit
+        return false if value.nil?
+
         if self.Sensor_Min
           fits &= self.Sensor_Min <= value 
         end

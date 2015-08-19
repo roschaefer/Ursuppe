@@ -28,6 +28,11 @@ RSpec.describe Ursuppe::TextComponent do
     specify { expect(too_cold).to fit(low_temperature) }
     specify { expect(comfortable).to fit(room_temperature) }
 
+    context "nil values" do
+      specify { expect(comfortable).not_to fit(movement_ground) }
+      specify { expect(morning_riot).not_to fit(room_temperature) }
+    end
+
     context "day of experiment is 1st of August" do
       before(:each) { stub_const("Ursuppe::START_OF_EXPERIMENT", Time.new(2015,8,01)) }
 
