@@ -7,7 +7,7 @@ module Ursuppe
 
       m = Measurement.last
       return if m.nil?
-      sended_commands = Command.where(:done => false)
+      sended_commands = Command.where(:executed => false)
 
       suitable_text_components = TextComponent.all.select {|tc| tc.fits_to?(m)}
       suitable_text_components.each_with_index do |t, i|

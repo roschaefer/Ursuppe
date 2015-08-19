@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819101947) do
+ActiveRecord::Schema.define(version: 20150819105417) do
 
   create_table "commands", force: :cascade do |t|
     t.string  "function"
     t.integer "tweet_id"
-    t.boolean "done"
+    t.boolean "executed"
     t.string  "parameter"
     t.string  "description"
   end

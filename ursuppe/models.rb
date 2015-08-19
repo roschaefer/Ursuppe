@@ -69,5 +69,10 @@ module Ursuppe
 
   class Command < ActiveRecord::Base
     belongs_to :tweet
+
+    def executed!
+      self.executed = true
+      self.save!
+    end
   end
 end
