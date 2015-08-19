@@ -59,16 +59,11 @@ module Ursuppe
       time = now.strftime("%H:%M:%S")
       datetime = "#{date} #{time}"
 
-      result = %{---
-layout: post
-title:  "#{title}"
-date:   #{datetime}
-categories: ursuppe
----}
+      result = "---\nlayout: post\ntitle:  #{title}\ndate:   #{datetime}\ncategories: ursuppe\n---"
 
-result << self.text
-filename = "#{date}-#{title}"
-File.open("UrsuppeBlog/_posts/#{filename}.md", 'w') { |file| file.write(result) }
+      result << self.text
+      filename = "#{date}-#{title}"
+      File.open("UrsuppeBlog/_posts/#{filename}.md", 'w') { |file| file.write(result) }
     end
   end
 end
