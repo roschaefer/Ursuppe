@@ -1,23 +1,9 @@
 module Ursuppe
   class TextProcessor
-    def text()
+    def text
       text = ""
       pre_text = ""
       post_text = ""
-
-      now = Time.now
-
-      date = now.strftime("%Y-%m-%d")
-      time = now.strftime("%H:%M:%S")
-      datetime = "#{date} #{time}"
-
-
-      start_day = Time.new(2015, 07, 31)
-      day_of_experiment = ((now - start_day)/1.day).to_i
-      fill_level = 5
-      temperature = 21
-      light = 5
-
 
       m = Measurement.last
       return if m.nil?
@@ -63,14 +49,19 @@ module Ursuppe
       result << post_text
       result << "\n"
 
-      result.gsub!("%!tag", day_of_experiment.to_s)
+      result.gsub!("%!tag", Ursuppe.day_of_experiment.to_s)
+      fill_level = 5
       result.gsub!("%!fuell", fill_level.to_s)
-      result.gsub!("%!licht", light.to_s)
-      result.gsub!("%!temp", temperature.to_s)
+      result.gsub!("%!licht", m.light.to_s)
+      result.gsub!("%!temp", m.temperature.to_s)
       result
     end
 
     def save_text(title)
+      date = now.strftime("%Y-%m-%d")
+      time = now.strftime("%H:%M:%S")
+      datetime = "#{date} #{time}"
+
       result = %{---
 layout: post
 title:  "#{title}"

@@ -23,12 +23,11 @@ module Ursuppe
         end
       end
 
-      day_of_experiment = ((Time.now - Ursuppe::START_OF_EXPERIMENT)/1.day).to_i
       if self.Baustein_von
-        fits &= self.Baustein_von <= day_of_experiment
+        fits &= self.Baustein_von <= Ursuppe.day_of_experiment
       end
       if self.Baustein_bis
-        fits &= self.Baustein_bis >= day_of_experiment
+        fits &= self.Baustein_bis >= Ursuppe.day_of_experiment
       end
 
 

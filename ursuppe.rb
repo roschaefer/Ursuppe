@@ -13,4 +13,9 @@ require './ursuppe/sender'
 
 module Ursuppe
   START_OF_EXPERIMENT = Time.new(2015, 01, 01)
+
+  def self.day_of_experiment
+    ((Time.now - Ursuppe::START_OF_EXPERIMENT)/1.day).to_i
+  end
+
 end
