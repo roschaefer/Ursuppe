@@ -23,37 +23,15 @@ module Ursuppe
       return if m.nil?
       sended_commands = Command.where(:done => false)
 
-      TextComponent.all.each_with_index do |t, i|
-        fits = true
-        fits &= (t.Baustein_von <= day_of_experiment)
-        fits &= (day_of_experiment <= t.Baustein_bis)
-        #fits &= (t.Baustein_Zeitvon <= 20)
-        #fits &= (20 < t.Baustein_Zeitbis)
-        fits &= (t.Baustein_Typ == "text")
-
-        unless t.Sensor_Nr == 0
-          mapping = {
-            1=> :temperature,
-            2=> :light,
-            3=> :movement_ground
-          }
-          sensor_attribute = mapping[t.Sensor_Nr]
-          value = m.send(sensor_attribute) if sensor_attribute
-          if value
-            fits &= (t.Sensor_Min <= value)
-            fits &= (value <= t.Sensor_Max)
-          end
+      suitable_text_components = TextComponent.all.select {|tc| tc.fits_to?(m)}
+      suitable_text_components.each_with_index do |t, i|
+        pre_text << t.Baustein_Vorspann.to_s
+        if (i % 3 == 0)
+          text << "\n\n####{t.Baustein_Titel}" if t.Baustein_Titel
+          text << "\n\n"
         end
-
-        if fits
-          pre_text << t.Baustein_Vorspann.to_s
-          if (i % 3 == 0)
-            text << "\n\n####{t.Baustein_Titel}" if t.Baustein_Titel
-            text << "\n\n"
-          end
-          text << t.Baustein_Text.to_s
-          post_text << t.Baustein_Abspann.to_s
-        end
+        text << t.Baustein_Text.to_s
+        post_text << t.Baustein_Abspann.to_s
       end
 
       command_section = ""

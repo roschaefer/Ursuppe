@@ -12,8 +12,6 @@ RSpec.describe Ursuppe::TextProcessor do
                           :Sensor_Nr => 1,
                           :Sensor_Min => 40,
                           :Sensor_Max => 100,
-                          :Baustein_von => 1,
-                          :Baustein_bis => 100,
                           :Baustein_Typ => "text",
                           :Baustein_Text => "Es ist brüllend heiß!"
       ) }
