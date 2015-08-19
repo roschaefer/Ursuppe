@@ -1,3 +1,3 @@
-require './app'
+require './ursuppe'
 require './connection'
 binding.pry

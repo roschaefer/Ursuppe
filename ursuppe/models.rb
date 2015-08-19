@@ -5,6 +5,7 @@ module Ursuppe
       2 => :light,
       3 => :movement_ground
     }
+
     def fits_to?(measurement)
       fits = true
       attribute_name = MAPPING_SENSOR_NR[self.Sensor_Nr]
@@ -29,6 +30,9 @@ module Ursuppe
       if self.Baustein_bis
         fits &= self.Baustein_bis >= day_of_experiment
       end
+
+
+      fits &= self.Baustein_Typ == 'text'
 
       fits
     end

@@ -23,6 +23,8 @@ RSpec.describe Ursuppe::TextComponent do
     let(:morning_riot)       { Ursuppe::TextComponent.create!(:Sensor_Nr => 3, :Sensor_Min => 1, :Baustein_Zeitvon => 6, :Baustein_Zeitbis => 10) }
     let(:nightly_brightness) { Ursuppe::TextComponent.create!(:Sensor_Nr => 2, :Sensor_Max => 5, :Baustein_Zeitvon => 0, :Baustein_Zeitbis => 5) }
 
+    let(:not_a_text_component_at_all) { Ursuppe::TextComponent.create!(:Baustein_Typ => 'kein_text') }
+
     specify { expect(too_hot).to fit(high_temperature) }
     specify { expect(too_hot).not_to fit(low_temperature) }
     specify { expect(too_cold).to fit(low_temperature) }
@@ -31,6 +33,11 @@ RSpec.describe Ursuppe::TextComponent do
     context "nil values" do
       specify { expect(comfortable).not_to fit(movement_ground) }
       specify { expect(morning_riot).not_to fit(room_temperature) }
+    end
+
+    context "text components not of type 'text'" do
+      specify { expect(not_a_text_component_at_all).not_to fit(bright_light) }
+      specify { expect(not_a_text_component_at_all).not_to fit(room_temperature) }
     end
 
     context "day of experiment is 1st of August" do

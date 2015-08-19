@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818214856) do
+ActiveRecord::Schema.define(version: 20150819003211) do
 
   create_table "commands", force: :cascade do |t|
     t.string  "name"
@@ -25,28 +25,8 @@ ActiveRecord::Schema.define(version: 20150818214856) do
     t.integer "temperature"
   end
 
-  create_table "text_components", primary_key: "Baustein_ID", force: :cascade do |t|
-    t.string   "Baustein_Titel"
-    t.string   "Baustein_Typ"
-    t.integer  "Baustein_Prio"
-    t.integer  "Baustein_von"
-    t.integer  "Baustein_bis"
-    t.datetime "Baustein_Zeitvon"
-    t.datetime "Baustein_Zeitbis"
-    t.integer  "Sensor_Nr"
-    t.integer  "Sensor_Min"
-    t.integer  "Sensor_Max"
-    t.integer  "Min_vergangenseitmessung"
-    t.integer  "zufallszahl_set"
-    t.integer  "zufallszahl_position"
-    t.text     "Baustein_Text"
-    t.string   "Baustein_Vorspann"
-    t.string   "Baustein_Abspann"
-    t.string   "Baustein_Quelle"
-    t.string   "bild_name"
-    t.string   "bild_bu"
-    t.string   "bild_credit"
-  end
+# Could not dump table "text_components" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "tweets", force: :cascade do |t|
     t.string   "user"
