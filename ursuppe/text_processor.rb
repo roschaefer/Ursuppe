@@ -7,7 +7,6 @@ module Ursuppe
 
       m = Measurement.last
       return if m.nil?
-      sended_commands = Command.where(:executed => false)
 
       suitable_text_components = TextComponent.all.select {|tc| tc.fits_to?(m)}
       suitable_text_components.each_with_index do |t, i|
@@ -20,16 +19,13 @@ module Ursuppe
         post_text << t.Baustein_Abspann.to_s
       end
 
-      command_section = ""
-      sended_commands.find_each do |command|
-        mapping = {
-          "light_on" => "Einschalten",
-          "light_off" => "Ausschalten"
-        }
-        what = mapping[command.name]
-        command_section << "\n**Feedback**:\n Vielen Dank an #{command.tweet.user} für das #{what} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.%m.%Y")}!\n"
-        command.done = true
-        command.save
+      not_yet_mentioned_tweets = Tweet.where(:mentioned => false)
+      twitter_section = ""
+      not_yet_mentioned_tweets.find_each do |tweet|
+        tweet.commands.each do |command|
+          twitter_section << "\n**Feedback**:\n Vielen Dank an #{command.tweet.user} für das #{what} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.%m.%Y")}!\n"
+        end
+        tweet.mentioned!
       end
 
 
@@ -38,7 +34,7 @@ module Ursuppe
       result << "####{pre_text}"
       result << "\n"
       result << "\n"
-      result << command_section
+      result << twitter_section
       result << "\n"
       result << "\n"
       result << "\n"

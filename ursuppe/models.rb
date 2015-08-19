@@ -64,6 +64,11 @@ module Ursuppe
         end
       end
     end
+
+    def mentioned!
+      self.mentioned = true
+      self.save!
+    end
   end
 
 

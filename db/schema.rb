@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819105417) do
+ActiveRecord::Schema.define(version: 20150819114806) do
 
   create_table "commands", force: :cascade do |t|
     t.string  "function"
@@ -30,14 +30,7 @@ ActiveRecord::Schema.define(version: 20150819105417) do
 # Could not dump table "text_components" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
-  create_table "tweets", force: :cascade do |t|
-    t.string   "user"
-    t.text     "text"
-    t.string   "location"
-    t.string   "image"
-    t.boolean  "done"
-    t.datetime "tweeted_at"
-    t.integer  "twitter_id", limit: 8
-  end
+# Could not dump table "tweets" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 end
