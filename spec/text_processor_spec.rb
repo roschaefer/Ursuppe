@@ -1,6 +1,4 @@
-require './text_processor'
-
-RSpec.describe TextProcessor do
+RSpec.describe Ursuppe::TextProcessor do
   describe "::new" do
     it "can be initialized" do
       described_class.new
@@ -9,8 +7,8 @@ RSpec.describe TextProcessor do
 
   describe "#text" do
     context "given high temperature" do
-      before(:each) { Measurement.create!(:temperature => 50) }
-      before(:each) { TextComponent.create!(
+      before(:each) { Ursuppe::Measurement.create!(:temperature => 50) }
+      before(:each) { Ursuppe::TextComponent.create!(
                           :Sensor_Nr => 1,
                           :Sensor_Min => 40,
                           :Sensor_Max => 100,

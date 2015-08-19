@@ -17,6 +17,16 @@ class  TextComponent < ActiveRecord::Base
         fits &= self.Sensor_Max >= value
       end
     end
+
+
+    binding.pry
+    if self.Baustein_von
+      fits &= self.Baustein_von <= Ursuppe::START_OF_EXPERIMENT
+    end
+    if self.Baustein_bis
+      fits &= self.Baustein_bis >= Ursuppe::START_OF_EXPERIMENT
+    end
+
     fits
   end
 end

@@ -1,6 +1,4 @@
-require './tweet_crawler'
-
-RSpec.describe TweetCrawler do
+RSpec.describe Ursuppe::TweetCrawler do
   describe "::new" do
     it "can be initialized" do
       described_class.new
@@ -23,8 +21,8 @@ RSpec.describe TweetCrawler do
     end
 
     describe "#save_tweets" do
-      specify{expect(Tweet.all).to be_empty}
-      specify{expect{subject.save_tweets}.to change{Tweet.count}.from(0).to(1)}
+      specify{expect(Ursuppe::Tweet.all).to be_empty}
+      specify{expect{subject.save_tweets}.to change{Ursuppe::Tweet.count}.from(0).to(1)}
     end
   end
 end
