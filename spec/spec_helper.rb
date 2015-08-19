@@ -1,4 +1,5 @@
 require 'rspec/collection_matchers'
+
 Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f }
 require_relative '../ursuppe'
 require 'vcr'

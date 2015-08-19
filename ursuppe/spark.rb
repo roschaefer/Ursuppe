@@ -21,7 +21,7 @@ module Ursuppe
       end
     end
 
-    def save_measurement
+    def save_measurements
       attributes = {}
       begin
         attributes[:movement_ground] = @receiver_core.variable("movement_gro")
