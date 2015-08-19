@@ -1,20 +1,19 @@
 require './app'
 require './connection'
 
-crawler = Crawler.new
-processor = TextProcessor.new
-tweeter = TweetCrawler.new
-sender = Sender.new
+spark = Ursuppe::Spark.new
+processor = Ursuppe::TextProcessor.new
+tweeter = Ursuppe::TweetCrawler.new
 
 i = 0
 
 loop do
   i += 1
   puts "iteration #{i}"
-  crawler.save_measurement
+  spark.save_measurement
   processor.save_text("Reportage aus der Ursuppe Nr.#{i}")
   tweeter.save_tweets
-  sender.send_commands
+  spark.send_commands
   puts "Press Enter"
   gets
 end
