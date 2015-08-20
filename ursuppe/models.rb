@@ -54,8 +54,8 @@ module Ursuppe
 
     def create_commands
       hashtag_mapping = {
-        "#lichtan" => { :function => :led, :parameter => :on, :description => "Einschalten des Lichts"},
-        "#lichtaus" => { :function => :led, :parameter => :off, :description => "Ausschalten des Lichts"}
+        "#lichtan" => { :function => :led, :parameter => :on, :description => "das Einschalten des Lichts"},
+        "#lichtaus" => { :function => :led, :parameter => :off, :description => "das Ausschalten des Lichts"}
       }
 
       hashtag_mapping.each do |hashtag, attributes|

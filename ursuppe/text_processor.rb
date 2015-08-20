@@ -23,7 +23,7 @@ module Ursuppe
       twitter_section = ""
       not_yet_mentioned_tweets.find_each do |tweet|
         tweet.commands.each do |command|
-          twitter_section << "\n**Feedback**:\n Vielen Dank an #{command.tweet.user} für das #{command.description} des Lichts, am #{command.tweet.tweeted_at.strftime("%d.%m.%Y")}!\n"
+          twitter_section << "\n**Feedback**:\n Vielen Dank an #{tweet.user} für #{command.description} am #{tweet.tweeted_at.strftime("%d.%m.%Y")}!\n"
         end
         tweet.mentioned!
       end
