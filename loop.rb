@@ -1,4 +1,4 @@
-require './app'
+require './ursuppe'
 require './connection'
 
 spark = Ursuppe::Spark.new
@@ -10,7 +10,7 @@ i = 0
 loop do
   i += 1
   puts "iteration #{i}"
-  spark.save_measurement
+  spark.save_measurements
   tweeter.save_tweets
   processor.save_text("Reportage aus der Ursuppe Nr.#{i}")
   spark.send_commands
