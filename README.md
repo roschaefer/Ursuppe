@@ -13,16 +13,17 @@ Install the dependencies and setup your database:
     $ rake db:migrate
     $ rake db:migrate RAILS_ENV=test
 
-Create your [Twitter Tokens](https://apps.twitter.com/) and you will need your Spark Tokens as well. Save them in a file called 'secrets.yml'. You can use the [template](/secrets.yml.default) of course.
+Create your [Twitter Tokens](https://apps.twitter.com/) and you will need your Spark Tokens as well. Store them in a file called ```secrets.yml```, use the [template](/secrets.yml.default) for example.
 
-In order to view the live blog you need to install the jekyll blogging framework.
+In order to view the live blog you need to install the [jekyll blogging framework](http://jekyllrb.com/).
 
 ## Usage
 
-Set the ```START\_OF\_EXPERIMENT``` constant in the [Ursuppe.rb](/ursuppe.rb).
+Set the ```START_OF_EXPERIMENT``` constant in [Ursuppe.rb](/ursuppe.rb).
 
 
 Run:
+
     $ ruby loop.rb
 
 Start jekyll in the blog folder:
@@ -30,10 +31,16 @@ Start jekyll in the blog folder:
     $ cd UrsuppeBlog
     $ jekyll server
 
-Point your Browser to your [local web server](http://localhost:4000/ursuppe/).
+Point your Browser to [localhost](http://localhost:4000/ursuppe/).
 
 
 ## Development
+
+## Test
+
+Run:
+
+    $ bundle exec rspec
 
 
 ## Contributing
