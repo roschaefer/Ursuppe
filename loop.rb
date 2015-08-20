@@ -11,8 +11,8 @@ loop do
   i += 1
   puts "iteration #{i}"
   spark.save_measurement
-  processor.save_text("Reportage aus der Ursuppe Nr.#{i}")
   tweeter.save_tweets
+  processor.save_text("Reportage aus der Ursuppe Nr.#{i}")
   spark.send_commands
   puts "Press Enter"
   gets

@@ -62,7 +62,7 @@ module Ursuppe
       result = "---\nlayout: post\ntitle:  #{title}\ndate:   #{datetime}\ncategories: ursuppe\n---"
 
       result << self.text
-      filename = "#{date}-#{title}"
+      filename = "#{date}-#{time}-#{title}"
       File.open("UrsuppeBlog/_posts/#{filename}.md", 'w') { |file| file.write(result) }
     end
   end
