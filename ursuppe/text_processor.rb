@@ -6,7 +6,7 @@ module Ursuppe
       post_text = ""
 
       m = Measurement.last
-      return if m.nil?
+      return "Es liegen noch keine Messdaten vor." if m.nil?
 
       suitable_text_components = TextComponent.all.select {|tc| tc.fits_to?(m)}
       suitable_text_components.each_with_index do |t, i|

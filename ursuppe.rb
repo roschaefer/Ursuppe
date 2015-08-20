@@ -14,7 +14,8 @@ module Ursuppe
   START_OF_EXPERIMENT = Time.new(2015, 8, 01)
 
   def self.day_of_experiment
-    ((Time.now - Ursuppe::START_OF_EXPERIMENT)/1.day).to_i
+    # We start to count with 1 not 0. So we have to add 1 day extra
+    ((Time.now - Ursuppe::START_OF_EXPERIMENT + 1.day)/1.day).to_i
   end
 
 end
